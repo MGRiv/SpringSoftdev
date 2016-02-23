@@ -1,0 +1,6 @@
+<html>
+  <canvas height="500" width="500" id="canvas"></canvas>
+  <button id="button1">Pulse</button>
+  <button id="button2">Stop</button>
+  <script src="pulse.js"></script>
+</html>
