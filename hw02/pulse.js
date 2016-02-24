@@ -3,6 +3,7 @@ var pul = document.getElementById("button1");
 var ctx = c.getContext("2d");
 var diff = -1;
 var rad = 0;
+var frameid;
 
 ctx.fillStyle = "#ff0000";
 var col = 1;
@@ -26,7 +27,7 @@ var pulse = function pulse(e) {
     ctx.beginPath();
     ctx.arc(c.width/2, c.height/2, rad, 0, 2*Math.PI);
     ctx.fill();
-    window.requestAnimationFrame(pulse);
+    frameid = window.requestAnimationFrame(pulse);
 }
 
 

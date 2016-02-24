@@ -1,0 +1,18 @@
+var c = document.getElementById("canvas");
+var ctx = c.getContext("2d");
+var b = document.getElementById("button1");
+var s = document.getElementById("button2");
+var xdiff = 1;
+var ydiff = 1;
+var frameid;
+var img;
+
+b.addEventListener("click",bounce);
+window.onload = function() {
+    img = new Image();
+    img.src = "http://files.softicons.com/download/tv-movie-icons/poke-balls-icons-by-davi-andrade/png/512x512/Poke%20Ball.png"
+}
+
+var bounce = function bounce(e) {
+    ctx.drawImage(img,c.width/2,c.height/2,25,25);
+}
