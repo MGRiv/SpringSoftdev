@@ -1,0 +1,5 @@
+var canvas = document.getElementById("canvas");
+var circle = document.getElementById("c");
+var bounce = document.getElementById("b");
+var stop = document.getElementById("s");
+var clear = document.getElementById("cl");
