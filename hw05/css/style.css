@@ -1,1 +1,6 @@
-
+.chart div{
+    font: 10px
+    text-align: right;
+    height:120px;
+    margin: 1px;
+}
