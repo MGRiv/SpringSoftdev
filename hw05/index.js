@@ -59,11 +59,15 @@ data = [["Alabama", 60],
 
 occurred = ["Iowa","New Hampshire","Nevada","South Carolina","Alabama","Arkansas","Colorado","Georgia","Massachusetts","Minnesota","Oklahoma","Tennessee","Texas","Vermont","Virginia","American Samoa","Kansas","Louisiana","Nebraska","Maine","Michigan","Mississippi","Northern Marianas","Florida","Illinois","Missouri","North Carolina","Ohio"]
 
+var x = d3.scale.linear()
+    .domain([0, 58])
+    .range([0, 100]);
+
 var setup = d3.select(".chart")
     .data(data)
     .enter()
     .append("div")
-    .style("width", function(d) { return d[1] * 2.5 + "px"; })
+    .style("width", function(d) { return x(d[1]) + "px"; })
     .style("background-color", function(d) {
 	if(occurred.indexOf(d[0]) != -1){
 	    return "cyan";
@@ -81,3 +85,5 @@ var setup = d3.select(".chart")
     .style("margin","1px")
     .style("padding","1px")
     .text(function(d) { return d[0] + ": "+ d[1]; });
+
+
