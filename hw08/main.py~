@@ -1,0 +1,5 @@
+def union(l1):
+    def u2(l2):
+        return [x for x not in l1]
+    t = u2
+    return [x for x in l1 or t]
