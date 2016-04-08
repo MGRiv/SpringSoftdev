@@ -1,12 +1,15 @@
 import time
 
+t= time.time()
+t2 = time.time()
+
 def wrapper( f ):
-    t = time.time()
     def inner( *arg ):
-        print f.func_name + ":"
-        return f( *arg )
-    t2 = time.time() - t
-    print "time:" + str(t2)
+        t = time.time()
+        q = f( *arg )
+        t2 = time.time()
+        print f.func_name + ":\ntime:" + str(t2-t) + "\n"
+        return q
     return inner
 
 @wrapper
