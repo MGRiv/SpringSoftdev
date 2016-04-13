@@ -1,26 +1,38 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import utils
+import time
 
 app = Flask(__name__)
 
-def wrapper( f ):
-   def inner( *arg ):
-       startTime = time.time()
-       g = f(*arg)
-       print "execution time: " + str(time.time()-startTime)
-       return g
-   return inner
+def fname(f):
+    def inner(*arg):
+        print f.func_name + ": " + str(arg)
+        return f(*arg)
+    return inner
+
+def exec_time(f):
+    def inner(*arg):
+        s = time.time()
+        q = f(*arg)
+        print "execution time: " + str(time.time()-s)
+        return q
+    return inner
 
 @app.route("/")
+@exec_time
+@fname
 def home():
     return render_template("home.html")
 
 @app.route("/about")
+#@exec_time
+#@fname
 def about():
     return render_template("about.html")
 
-@wrapper
 @app.route("/login",methods=["GET","POST"])
+#@exec_time
+#@fname
 def login():
     if 's' in session:
         return redirect(url_for("profile"))
@@ -39,6 +51,8 @@ def login():
             return render_template("login.html")
 
 @app.route("/profile",methods=["GET","POST"])
+#@exec_time
+#@fname
 def profile():
     if 's' not in session:
         return redirect(url_for("login"))
@@ -52,6 +66,8 @@ def profile():
             return redirect(url_for("logout"))
 
 @app.route("/logout")
+#@exec_time
+#@fname
 def logout():
     session.pop('s', None)
     return redirect(url_for("login"))
